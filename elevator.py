@@ -12,7 +12,6 @@ class Elevator:
                 f"Moving down to the {target_floor}th floor."
                )
 
-
     def operate(self, current_floor, user_floor, target_floor):
         if current_floor < user_floor:
             action = self.move_up(user_floor)

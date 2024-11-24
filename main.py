@@ -17,7 +17,6 @@ def run_simulation():
           f"wants to go to the {user_target_floor}th floor."
          )
 
-
     result = elevator.operate(elevator_start_floor, user_start_floor, user_target_floor)
     return result
 
