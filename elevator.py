@@ -1,34 +1,37 @@
+import time
+
 class Elevator:
     def __init__(self):
         self.current_floor = 1
 
-    def move_up(self, target_floor):
-        return (f"The lift is on the {self.current_floor}th floor:\n"
-                f"Moving up to the {target_floor}th floor."
-               )
+    def move_floors_of_elevator(self, total_floors: int):
+        result = []
+        for floor in range(total_floors, 0, -1):
+            result.append(f"{floor}")
+        return result
 
-    def move_down(self, target_floor):
-        return (f"The lift is on the {self.current_floor}th floor:\n"
-                f"Moving down to the {target_floor}th floor."
-               )
+    def down_move_of_elevator(self, floor_count: list):
+        result = ""
+        for x in range(len(floor_count)-1, -1, -1):
+            result = ""
+            for y in range(len(floor_count), 0, -1):
+                if y == x + 1:
+                    result += f"{y} - []\n"
+                else:
+                    result += f"{y} - \n"
+            print(result)
+            time.sleep(1)
+        return result
 
-    def operate(self, current_floor, user_floor, target_floor):
-        if current_floor < user_floor:
-            action = self.move_up(user_floor)
-            self.current_floor = user_floor
-        elif current_floor > user_floor:
-            action = self.move_down(user_floor)
-            self.current_floor = user_floor
-        else:
-            action = "The lift is already on the floor where the user is."
-
-        if self.current_floor < target_floor:
-            action += f" {self.move_up(target_floor)}"
-            self.current_floor = target_floor
-        elif self.current_floor > target_floor:
-            action += f" {self.move_down(target_floor)}"
-            self.current_floor = target_floor
-        else:
-            action += "The user is already on the desired floor."
-
-        return action
+    def up_move_of_elevator(self, floor_count: list):
+        result = ""
+        for x in range(len(floor_count)):
+            result = ""
+            for y in range(len(floor_count), 0, -1):
+                if y == x + 1:
+                    result += f"{y} - []\n"  
+                else:
+                    result += f"{y} - \n"
+            print(result)
+            time.sleep(1) 
+        return result
