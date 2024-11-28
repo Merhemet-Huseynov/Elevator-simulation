@@ -1,2 +1,2 @@
 class Building:
-    number_of_floors = 10 
+    number_of_floors = 10
