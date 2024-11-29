@@ -1,8 +1,10 @@
 from building import Building
-from elevator import Elevator
+from elevator.elevator import Elevator
 from user import User
 
 def simulation():
+    
+    # Creation of objects  
     building = Building() 
     elevator = Elevator()  
     user = User()      
@@ -20,21 +22,37 @@ def simulation():
     user_count = user.generate_user_count()
 
     # Elevator movement logic
-    if user_current_floor > elevator_current_floor:
+    if user_current_floor != elevator_current_floor:
+
+        # The elevator goes up to the floor where the user is.
+        if user_current_floor > elevator_current_floor:
+            elevator.up_move_of_elevator(floors,
+                                         elevator_current_floor, 
+                                         user_current_floor, 
+                                         user_count
+                                         )
+        elif user_current_floor < elevator_current_floor:
+            elevator.down_move_of_elevator(floors, 
+                                           elevator_current_floor, 
+                                           user_current_floor, 
+                                           user_count
+                                           )
+
+    # Takes the user to the target floor.
+    if user_target_floor != user_current_floor:
         if user_target_floor > user_current_floor:
             return elevator.up_move_of_elevator(floors, 
                                                 user_current_floor, 
-                                                user_target_floor, 
+                                                user_target_floor,
                                                 user_count
                                                 )
-    elif user_current_floor < elevator_current_floor:
-        if user_target_floor < user_current_floor:
+        elif user_target_floor < user_current_floor:
             return elevator.down_move_of_elevator(floors, 
                                                   user_current_floor, 
                                                   user_target_floor, 
-                                                  user_count)
-                                                  
-    
+                                                  user_count
+                                                  )
+
     return "User current floor is same as target floor"
 
 # Run the simulation
