@@ -1,3 +1,4 @@
+from prettytable import PrettyTable
 from user import User
 from clear import Clear
 import time
@@ -57,29 +58,28 @@ class ElevatorProcess(Clear, User):
         return user_arrived, target
 
 
+
+
     def print_elevator_message(self, user_level: int,
-                               user_floor: int, 
+                               user_floor: int,
                                target_floor: int,
                                floor: int,
                                users: str) -> None:
+        """Prints elevator messages in table format."""
 
-        """This prints messages about the elevator's movement and the 
-              user's current floor and reaching the target floor."""
+        table = PrettyTable()
+        table.field_names = ["Elevator Movement", 
+                             "Users", 
+                             "User's Current Floor", 
+                             "User's Target Floor"]
 
+        # Add the data to the table 
         if user_floor >= target_floor:
-            if user_floor >= target_floor:
-                print(f"Elevator movement {floor}\n{users}"
-                      f"\nUser\'s current floor  - {user_level}"
-                      f"\nUser\'s target floor - {target_floor}")
-            else:
-                print(f"The elevator was called from the {user_level}th floor.")
+            table.add_row([floor, users, user_level, target_floor])
+            print(table)
         else:
-            if floor >= user_level:
-                print(f"Elevator movement {floor}\n{users}"
-                      f"\nUser\'s current floor  - {user_level}"
-                      f"\nUser\'s target floor - {target_floor}")
-            else:
-                print(f"The elevator was called from the {user_level}th floor.")
+            table.add_row([floor, users, user_level, target_floor])
+            print(table)
 
 
     def move_elevator(self, floor_count: list, 
