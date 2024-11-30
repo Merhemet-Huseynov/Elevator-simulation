@@ -1,4 +1,4 @@
-from process_simulation import simulation
+from elevator_system.process_simulation import simulation
 import datetime
 
 # Start and end times

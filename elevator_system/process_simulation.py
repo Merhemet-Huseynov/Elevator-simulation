@@ -1,6 +1,5 @@
-from building import Building
-from elevator.elevator import Elevator
-from user import User
+from elevator_system import User, Building
+from elevator import Elevator
 from time import sleep
 
 def move_elevator_to_user(elevator, floors, elevator_current_floor, user_current_floor, user_count):
@@ -59,7 +58,7 @@ def simulation():
                               elevator_current_floor, 
                               user_current_floor, 
                               user_count)
-        sleep(2)
+        sleep(1)
 
     if user_target_floor != user_current_floor:
         move_elevator_to_target(elevator, 
@@ -67,7 +66,7 @@ def simulation():
                                 user_current_floor, 
                                 user_target_floor, 
                                 user_count)
-        sleep(2)
+        sleep(1)
     else:
         return "User current floor is same as target floor"
 

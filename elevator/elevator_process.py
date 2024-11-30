@@ -1,6 +1,5 @@
 from prettytable import PrettyTable
-from user import User
-from clear import Clear
+from elevator_system import User, Clear
 import time
 
 class ElevatorProcess(Clear, User):
@@ -10,9 +9,12 @@ class ElevatorProcess(Clear, User):
                          target_floor: int, 
                          user_level: int, 
                          target: list) -> str:
-
         """Determines whether the elevator is full or not, its status."""
-
+        
+        # Creating a PrettyTable instance
+        table = PrettyTable()
+        table.field_names = ["Floor", target_floor]
+        
         result = ""
         if user_floor >= target_floor:
             if user_floor >= target_floor:
@@ -24,7 +26,14 @@ class ElevatorProcess(Clear, User):
                 result += f"{level} - {target} \n"
             else:
                 result += f"{level} - [] \n"
-        return result
+
+        # Now the result is divided and added to the table
+        lines = result.strip().split("\n")
+        for line in lines:
+            level, target_floors = line.split(" - ")
+            table.add_row([level, target_floors])
+
+        return str(table)
 
 
     def get_direction_params(self, direction: str, floor_count: list) -> tuple:
@@ -58,8 +67,6 @@ class ElevatorProcess(Clear, User):
         return user_arrived, target
 
 
-
-
     def print_elevator_message(self, user_level: int,
                                user_floor: int,
                                target_floor: int,
@@ -68,17 +75,16 @@ class ElevatorProcess(Clear, User):
         """Prints elevator messages in table format."""
 
         table = PrettyTable()
-        table.field_names = ["Elevator Movement", 
-                             "Users", 
+        table.field_names = ["Users", 
                              "User's Current Floor", 
                              "User's Target Floor"]
 
         # Add the data to the table 
         if user_floor >= target_floor:
-            table.add_row([floor, users, user_level, target_floor])
+            table.add_row([users, user_level, target_floor])
             print(table)
         else:
-            table.add_row([floor, users, user_level, target_floor])
+            table.add_row([users, user_level, target_floor])
             print(table)
 
 
