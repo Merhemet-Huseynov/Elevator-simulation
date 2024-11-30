@@ -10,7 +10,7 @@ class Elevator(ElevatorProcess):
         for floor in range(total_floors, 0, -1):
             result.append(floor)
         return result
-
+    
     def up_move_of_elevator(self, floor_count: list, user_floor: int, target_floor: int, users: str):
         self.move_elevator(floor_count, 
                            user_floor, 

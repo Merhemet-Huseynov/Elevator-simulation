@@ -55,6 +55,6 @@ def simulation():
 
     return "User current floor is same as target floor"
 
-# Run the simulation
+
 result = simulation()
 print(result)
