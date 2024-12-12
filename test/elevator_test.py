@@ -4,7 +4,7 @@ import os
 # File path
 sys.path.append(os.path.abspath("../"))
 
-from elevator.elevator import Elevator
+from elevator import Elevator
 import unittest
 
 class TestElevator(unittest.TestCase):

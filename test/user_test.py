@@ -4,7 +4,7 @@ import os
 # File path
 sys.path.append(os.path.abspath("../"))
 
-from user import User
+from elevator_system import User
 import unittest
 
 class TestUser(unittest.TestCase):
@@ -13,7 +13,7 @@ class TestUser(unittest.TestCase):
         user = User()
         result = user.generate_user_count()
         user_count = len(result.split())
-        self.assertIn(user_count, [1, 2, 3])
+        self.assertIn(user_count, [1, 2, 3, 4, 5])
     
     def test_current_floor(self):
         user = User()

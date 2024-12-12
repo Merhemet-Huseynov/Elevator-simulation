@@ -28,8 +28,8 @@ step, displaying new data.
 
 - Python 3.12.5
 This script uses only Python's built-in libraries (`random`, `time`, `os`,
-`datetime`).  Use `prettable` for formatting tables, ensure it is installed
-(`pip install prettable`) as it is not part of Python's standard library.
+`datetime`).  Use `prettytable` for formatting tables, ensure it is installed
+(`pip install prettytable`) as it is not part of Python's standard library.
 
 ## Running the Simulation
 
